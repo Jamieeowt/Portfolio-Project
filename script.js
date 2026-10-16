@@ -1,4 +1,4 @@
-import "./index.css";
+import "./style.css";
 
 const icons = {
   arrow: '<path d="M5 12h14m-5-5 5 5-5 5"/>',
