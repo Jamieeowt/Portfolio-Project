@@ -1,5 +1,3 @@
-import "./index.css";
-
 const certificates = [
   {
     code: "AI—01",
