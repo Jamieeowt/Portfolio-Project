@@ -61,14 +61,13 @@
       }
       .avatar-wrap {
         position: relative;
-        width: 140px;
-        height: 140px;
+        width: 200px;
+        height: 200px;
       }
       .avatar-wrap img {
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        filter: grayscale(1) contrast(1.08);
         object-fit: cover;
         object-position: 28% 30%;
         border: 2px solid #0b0b0b;
@@ -605,8 +604,7 @@
             <a class="brand" href="#about">JG<span>III</span></a>
             <div class="profile">
               <div class="avatar-wrap">
-                <img src="./Jamie.jpg" alt="Jaime Gerolao III" class="avatar-img" onerror="this.src='./public/Jamie.jpg'">
-                <span class="available-dot"></span>
+                <img src="./Jamie.png" alt="Jaime Gerolao III" class="avatar-img" onerror="this.src='./public/Jamie.png'">
               </div>
               <p class="profile-name">Jaime Gerolao III</p>
               <p class="profile-role">Web Developer</p>
@@ -639,7 +637,7 @@
               <span class="availability"><i></i>Available for opportunities</span>
             </div>
             <div class="hero-content">
-              <p class="overline">Hello, I am Jaime</p>
+              <p class="overline">Hello, I am Jaime, An Aspiring</p>
               <h1>Web developer building <em>clean, purposeful</em> digital experiences.</h1>
               <p class="hero-copy">Motivated individual looking to apply technical skills in a challenging environment. Quick learner with a passion for web development, software engineering, and artificial intelligence.</p>
               <div class="hero-actions">
@@ -693,7 +691,7 @@
                 <div class="certificate-preview">
                   <span>AI—01</span>
                   <div class="certificate-mark">
-                    <img src="./datacamp.png" alt="DataCamp logo" class="cert-logo-img" onerror="this.src='./public/datacamp.png'">
+                    <img src="./image0_DataCamp.png" alt="DataCamp logo" class="cert-logo-img" onerror="this.src='./public/image0_DataCamp.png'">
                   </div>
                   <small>DataCamp</small>
                 </div>
@@ -713,7 +711,7 @@
                 <div class="certificate-preview">
                   <span>FE—02</span>
                   <div class="certificate-mark">
-                    <img src="./hackerrank.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/hackerrank.png'">
+                    <img src="./HackerRank_Icon-1000px.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/HackerRank_Icon-1000px.png'">
                   </div>
                   <small>HackerRank</small>
                 </div>
@@ -733,7 +731,7 @@
                 <div class="certificate-preview">
                   <span>SE—03</span>
                   <div class="certificate-mark">
-                    <img src="./hackerrank.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/hackerrank.png'">
+                    <img src="./HackerRank_Icon-1000px.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='/public/HackerRank_Icon-1000px.png'">
                   </div>
                   <small>HackerRank</small>
                 </div>
@@ -753,7 +751,7 @@
                 <div class="certificate-preview">
                   <span>CSS—04</span>
                   <div class="certificate-mark">
-                    <img src="./hackerrank.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/hackerrank.png'">
+                    <img src="./HackerRank_Icon-1000px.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/HackerRank_Icon-1000px.png'">
                   </div>
                   <small>HackerRank</small>
                 </div>
@@ -773,7 +771,7 @@
                 <div class="certificate-preview">
                   <span>JV—05</span>
                   <div class="certificate-mark">
-                    <img src="./hackerrank.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/hackerrank.png'">
+                    <img src="./HackerRank_Icon-1000px.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/HackerRank_Icon-1000px.png'">
                   </div>
                   <small>HackerRank</small>
                 </div>
@@ -793,7 +791,7 @@
                 <div class="certificate-preview">
                   <span>SQL—06</span>
                   <div class="certificate-mark">
-                    <img src="./hackerrank.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/hackerrank.png'">
+                    <img src="./HackerRank_Icon-1000px.png" alt="HackerRank logo" class="cert-logo-img" onerror="this.src='./public/HackerRank_Icon-1000px.png'">
                   </div>
                   <small>HackerRank</small>
                 </div>
@@ -822,12 +820,18 @@
                 <div><span><small>Location</small>25 Kalayaan B, Batasan Hills, QC</span></div>
               </div>
             </div>
-            <form id="contact-form" action="https://formspree.io/f/xyzkopqr" method="POST">
-              <label>Your name<input name="name" type="text" placeholder="Your name" required autocomplete="name"></label>
-              <label>Email address<input name="email" type="email" placeholder="your@email.com" required autocomplete="email"></label>
-              <label>Message<textarea name="message" rows="5" placeholder="Leave a message..." required></textarea></label>
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <label>Your name
+                <input name="name" type="text" placeholder="Your name" required autocomplete="name">
+              </label>
+              <label>Email address
+                <input name="email" type="email" placeholder="your@email.com" required autocomplete="email">
+              </label>
+              <label>Message
+                <textarea name="message" rows="5" placeholder="Leave a message..." required></textarea>
+              </label>
               <button class="button button-white" id="submit-btn" type="submit">Send message</button>
-              <p id="form-status" style="margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 11px; display: none;"></p>
+              <p id="form-status" style="margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 11px; display: none;"></p>
             </form>
           </section>
 
@@ -860,6 +864,15 @@
 
       contactForm?.addEventListener("submit", async (e) => {
         e.preventDefault();
+        
+        // Check if Formspree ID has been set
+        if (contactForm.action.includes("YOUR_FORM_ID")) {
+          formStatus.textContent = "Please replace YOUR_FORM_ID in index.html with your Formspree endpoint.";
+          formStatus.style.color = "#f59e0b";
+          formStatus.style.display = "block";
+          return;
+        }
+
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
         formStatus.style.display = "none";
@@ -874,18 +887,18 @@
           });
 
           if (response.ok) {
-            formStatus.textContent = "Thank you! Your message has been sent.";
+            formStatus.textContent = "Thank you! Your message has been sent successfully.";
             formStatus.style.color = "#10b981";
             formStatus.style.display = "block";
             contactForm.reset();
           } else {
             const errorData = await response.json();
-            formStatus.textContent = errorData?.errors?.map(err => err.message).join(", ") || "Oops! There was a problem sending your message.";
+            formStatus.textContent = errorData?.errors?.map(err => err.message).join(", ") || "Failed to send message. Please try again.";
             formStatus.style.color = "#ef4444";
             formStatus.style.display = "block";
           }
         } catch (error) {
-          formStatus.textContent = "Network error. Please try again later or email directly.";
+          formStatus.textContent = "Network error. Please try again later or email me directly.";
           formStatus.style.color = "#ef4444";
           formStatus.style.display = "block";
         } finally {
