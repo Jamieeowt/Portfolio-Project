@@ -1,5 +1,3 @@
-import "./style.css";
-
 const icons = {
   arrow: '<path d="M5 12h14m-5-5 5 5-5 5"/>',
   calendar: '<path d="M6 3v3m12-3v3M4 9h16"/><rect x="4" y="5" width="16" height="16" rx="2"/>',
