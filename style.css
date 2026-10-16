@@ -1003,3 +1003,15 @@ html[data-theme="dark"] .theme-toggle > i {
     transition: none !important;
   }
 }
+
+.certificate-mark {
+  background: #ffffff;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.cert-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

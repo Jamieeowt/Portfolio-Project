@@ -1,180 +1,1030 @@
-const icons = {
-  arrow: '<path d="M5 12h14m-5-5 5 5-5 5"/>',
-  calendar: '<path d="M6 3v3m12-3v3M4 9h16"/><rect x="4" y="5" width="16" height="16" rx="2"/>',
-  code: '<path d="m8 9-3 3 3 3m8-6 3 3-3 3m-3-9-2 12"/>',
-  facebook: '<path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.7.3-1 1-1Z" fill="currentColor" stroke="none"/>',
-  github: '<path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1 1.6 1 .9 1.6 2.4 1.1 2.9.9.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5A3.9 3.9 0 0 1 6.7 8.5a3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7 1 .7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="currentColor" stroke="none"/>',
-  linkedin: '<rect x="4" y="9" width="4" height="11" fill="currentColor" stroke="none"/><circle cx="6" cy="5.5" r="2" fill="currentColor" stroke="none"/><path d="M11 9h4v1.7c.8-1.2 2-2 3.7-2 3.2 0 4.3 2.1 4.3 5.4V20h-4v-5.2c0-1.5-.3-2.6-1.8-2.6-1.6 0-2.2 1.1-2.2 3V20h-4V9Z" fill="currentColor" stroke="none"/>',
-  location: '<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
-  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
-  moon: '<path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/>',
-  phone: '<path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-4-2-2 2c-3.7-1.5-6.5-4.3-8-8l2-2-2-4Z"/>',
-};
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
 
-const icon = (name, size = 18) =>
-  `<svg aria-hidden="true" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`;
-
-const certificates = [
-  ["AI—01", "AI Engineer for Developers Associate", "DataCamp", "Oct 2026", "AIEDA0016110188487"],
-  ["FE—02", "Frontend Developer (React)", "HackerRank", "Oct 2026", "E32C814C5BCC"],
-  ["SE—03", "Software Engineer Intern", "HackerRank", "Oct 2026", "A201AA79087E"],
-  ["CSS—04", "CSS (Basic)", "HackerRank", "Oct 2026", "89CD41DOOOOB"],
-  ["JV—05", "Java (Basic)", "HackerRank", "Oct 2026", "90F1EEBBECB3"],
-  ["SQL—06", "SQL (Basic)", "HackerRank", "Oct 2026", "D4784BBACB50"],
-];
-
-const sectionHeading = (index, eyebrow, title) => `
-  <div class="section-heading">
-    <div class="section-kicker"><span>${index}</span><span>${eyebrow}</span></div>
-    <h2>${title}</h2>
-  </div>`;
-
-const themeToggle = (mobile = false) => `
-  <button class="theme-toggle${mobile ? " mobile-theme" : ""}" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-    <span class="theme-icon">${icon("moon", 15)}</span>
-    <span class="theme-label">Dark mode</span>
-    <i><b></b></i>
-  </button>`;
-
-document.querySelector("#root").innerHTML = `
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div>
-        <a class="brand" href="#about" aria-label="Back to top">JG<span>III</span></a>
-        <div class="profile">
-          <div class="avatar-wrap">
-            <img src="/profile.jpg" onerror="this.src='https://images.unsplash.com/photo-1642060603505-e716140d45d2?crop=faces&fit=crop&fm=jpg&h=480&q=85&w=480'" alt="Jaime Gerolao III">
-            <span class="available-dot" title="Available for opportunities"></span>
-          </div>
-          <p class="profile-name">Jaime Gerolao III</p>
-          <p class="profile-role">Web Developer</p>
-        </div>
-        <nav aria-label="Main navigation">
-          ${[
-            ["About me", "#about"],
-            ["Education & Skills", "#education"],
-            ["Certificates", "#certificates"],
-            ["Contact", "#contact"],
-          ].map(([label, href], index) => `<a href="${href}"><span>0${index + 1}</span>${label}</a>`).join("")}
-        </nav>
-        ${themeToggle(true)}
-      </div>
-      <div class="sidebar-footer">
-        ${themeToggle()}
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/jaime-gerolao-4b880a329/" target="_blank" rel="noreferrer" aria-label="LinkedIn">${icon("linkedin")}</a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">${icon("github")}</a>
-          <a href="https://www.facebook.com/Harme.gg" target="_blank" rel="noreferrer" aria-label="Facebook">${icon("facebook")}</a>
-        </div>
-        <p>© 2026 / Quezon City</p>
-      </div>
-    </aside>
-
-    <main>
-      <section class="hero" id="about">
-        <div class="hero-topline">
-          <span>Portfolio / 2026</span>
-          <span class="availability"><i></i>Available for opportunities</span>
-        </div>
-        <div class="hero-content">
-          <p class="overline">Hello, I’m Jaime — An Asipiring</p>
-          <h1>Web developer building <em>clean, purposeful</em> digital experiences.</h1>
-          <p class="hero-copy">Motivated individual looking to apply technical skills in a challenging environment. Quick learner with a passion for web development.</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="#contact">Let’s work together ${icon("arrow")}</a>
-            <a class="button button-light" href="#education">Explore credentials</a>
-          </div>
-        </div>
-        <div class="quick-facts">
-          <div><span>Based in</span><strong>Quezon City, PH</strong></div>
-          <div><span>Currently</span><strong>BSIT Student</strong></div>
-          <div><span>Focus</span><strong>Web Development</strong></div>
-        </div>
-      </section>
-
-      <section class="content-section" id="education">
-        ${sectionHeading("01", "Education & skills", "Always learning. Always building.")}
-        <div class="education-grid">
-          <article class="education-card">
-            <div class="card-icon">${icon("code", 22)}</div>
-            <p class="meta">Bachelor’s Degree</p>
-            <h3>Bachelor of Science in Information Technology</h3>
-            <p class="institution">Polytechnic University of the Philippines</p>
-            <div class="date">${icon("calendar")} 2024 — Present</div>
-          </article>
-          <div class="skills-panel">
-            <div class="skill-group"><p>Technical toolkit</p><div class="pills">${["HTML / CSS", "JavaScript", "React", "Java", "C", "SQL", "Git"].map((skill) => `<span>${skill}</span>`).join("")}</div></div>
-            <div class="skill-group"><p>Core strengths</p><div class="pills light">${["Communication", "Problem Solving", "Collaboration", "Quick Learner"].map((skill) => `<span>${skill}</span>`).join("")}</div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section muted-section" id="certificates">
-        ${sectionHeading("02", "Certificates", "Credentials that mark the journey.")}
-        <div class="certificate-grid">
-          ${certificates.map(([code, title, issuer, issueDate, credentialId]) => `
-            <article class="certificate-card">
-              <div class="certificate-preview"><span>${code}</span><div class="certificate-mark">JG</div><small>Certificate / Credential</small></div>
-              <div class="certificate-body">
-                <div><p>${issuer}</p><h3>${title}</h3></div>
-                <div class="credential-meta">
-                  <div><span>Issued</span><strong>${issueDate}</strong></div>
-                  <div><span>Credential ID</span><strong>${credentialId}</strong></div>
-                </div>
-              </div>
-            </article>`).join("")}
-        </div>
-      </section>
-
-      <section class="contact-section" id="contact">
-        <div class="contact-intro">
-          <div class="section-kicker light-kicker"><span>03</span><span>Get in touch</span></div>
-          <h2>Have an opportunity in mind? Let’s connect.</h2>
-          <p>I’m open to internships, web development roles, and collaborative opportunities.</p>
-          <div class="contact-details">
-            <a href="mailto:gerolaojaime@gmail.com">${icon("mail")}<span><small>Email</small>gerolaojaime@gmail.com</span></a>
-            <a href="tel:+639647617454">${icon("phone")}<span><small>Phone</small>+63 964 761 7454</span></a>
-            <div>${icon("location")}<span><small>Location</small>25 Kalayaan B, Batasan Hills, QC</span></div>
-          </div>
-        </div>
-        <form id="contact-form">
-          <label>Your name<input name="name" type="text" placeholder="Your name" required></label>
-          <label>Email address<input name="email" type="email" placeholder="your@email.com" required></label>
-          <label>Message<textarea name="message" rows="5" placeholder="Leave a message..." required></textarea></label>
-          <button class="button button-white" type="submit">Send message ${icon("arrow")}</button>
-        </form>
-      </section>
-      <footer class="main-footer"><p>© 2026 Jaime Gerolao III. All rights reserved.</p><a href="#about">Back to top ↑</a></footer>
-    </main>
-  </div>`;
-
-const savedTheme = localStorage.getItem("portfolio-theme");
-let isDark = savedTheme ? savedTheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-function applyTheme() {
-  document.documentElement.dataset.theme = isDark ? "dark" : "light";
-  localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
-  document.querySelectorAll(".theme-toggle").forEach((button) => {
-    button.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
-    button.setAttribute("title", `Switch to ${isDark ? "light" : "dark"} mode`);
-    button.querySelector(".theme-label").textContent = isDark ? "Light mode" : "Dark mode";
-    button.querySelector("i").classList.toggle("active", isDark);
-  });
+:root {
+  color: #0b0b0b;
+  background: #f8f8f6;
+  font-family: "Inter", sans-serif;
+  font-synthesis: none;
+  scroll-behavior: smooth;
 }
 
-document.querySelectorAll(".theme-toggle").forEach((button) => {
-  button.addEventListener("click", () => {
-    isDark = !isDark;
-    applyTheme();
-  });
-});
+* {
+  box-sizing: border-box;
+}
 
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const subject = encodeURIComponent(`Portfolio enquiry from ${form.get("name")}`);
-  const body = encodeURIComponent(`Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`);
-  window.location.href = `mailto:gerolaojaime@gmail.com?subject=${subject}&body=${body}`;
-});
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8f8f6;
+}
 
-applyTheme();
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  display: flex;
+  width: 284px;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #dededb;
+  background: #fff;
+  padding: 34px 30px 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.brand span {
+  margin-left: 3px;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+
+/* Enlarged Profile Avatar */
+.profile {
+  margin-top: 36px;
+}
+
+.avatar-wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: grayscale(1) contrast(1.08);
+  object-fit: cover;
+  object-position: 28% 30%;
+  border: 1px solid #e2e2df;
+}
+
+.available-dot {
+  position: absolute;
+  right: 6px;
+  bottom: 8px;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #0b0b0b;
+}
+
+.profile-name {
+  margin: 18px 0 4px;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.profile-role {
+  margin: 0;
+  color: #767676;
+  font-size: 13px;
+}
+
+/* Navigation Links */
+nav {
+  display: flex;
+  margin-top: 32px;
+  flex-direction: column;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #ededeb;
+  padding: 13px 0;
+  color: #696969;
+  font-size: 12px;
+  transition: color 180ms ease, padding 180ms ease;
+}
+
+nav a:last-child {
+  border-bottom: 1px solid #ededeb;
+}
+
+nav a span {
+  color: #aaa;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+}
+
+nav a:hover {
+  padding-left: 5px;
+  color: #0b0b0b;
+}
+
+.socials {
+  display: flex;
+  gap: 8px;
+}
+
+.socials a {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 1px solid #dededb;
+  border-radius: 50%;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.socials a:hover {
+  color: #fff;
+  background: #0b0b0b;
+}
+
+.sidebar-footer p {
+  margin: 18px 0 0;
+  color: #999;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  border: 0;
+  padding: 0;
+  color: #777;
+  background: transparent;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-icon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid #dededb;
+  border-radius: 50%;
+}
+
+.theme-toggle > i {
+  position: relative;
+  width: 29px;
+  height: 17px;
+  margin-left: auto;
+  border: 1px solid #c9c9c5;
+  border-radius: 20px;
+  background: #f1f1ee;
+}
+
+.theme-toggle > i b {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #777;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.theme-toggle > i.active b {
+  transform: translateX(12px);
+  background: #fff;
+}
+
+.mobile-theme {
+  display: none;
+}
+
+/* Main Content Area */
+main {
+  margin-left: 284px;
+}
+
+.hero {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f8f8f6;
+  padding: 32px clamp(44px, 7vw, 110px) 0;
+}
+
+.hero-topline {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.availability i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 0 0 4px #e3e3df;
+}
+
+.hero-content {
+  max-width: 940px;
+  padding: 80px 0;
+}
+
+.overline {
+  margin: 0 0 20px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 950px;
+  margin: 0;
+  font-size: clamp(46px, 6.4vw, 92px);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+h1 em {
+  color: #888;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.hero-copy {
+  max-width: 600px;
+  margin: 32px 0 0;
+  color: #676767;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 1px solid #0b0b0b;
+  border-radius: 3px;
+  padding: 0 22px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: transform 180ms ease, background 180ms ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-dark {
+  color: #fff;
+  background: #0b0b0b;
+}
+
+.button-light {
+  background: transparent;
+}
+
+.quick-facts {
+  display: grid;
+  border-top: 1px solid #d8d8d4;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.quick-facts div {
+  display: flex;
+  min-height: 90px;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #d8d8d4;
+  padding: 0 26px;
+}
+
+.quick-facts div:first-child {
+  padding-left: 0;
+}
+
+.quick-facts div:last-child {
+  border: 0;
+}
+
+.quick-facts span,
+.meta {
+  margin-bottom: 8px;
+  color: #999;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.quick-facts strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.content-section {
+  border-top: 1px solid #dededb;
+  background: #fff;
+  padding: 108px clamp(44px, 7vw, 110px);
+}
+
+.muted-section {
+  background: #f1f1ee;
+}
+
+.section-heading {
+  display: grid;
+  margin-bottom: 64px;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+.section-kicker {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  color: #777;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.section-kicker span:first-child {
+  color: #bbb;
+}
+
+.section-heading h2,
+.contact-intro h2 {
+  max-width: 650px;
+  margin: -8px 0 0;
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 550;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 18px;
+}
+
+.education-card,
+.skills-panel {
+  min-height: 390px;
+  border: 1px solid #dededb;
+  border-radius: 8px;
+  padding: 35px;
+}
+
+.education-card {
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f6;
+}
+
+.card-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  margin-bottom: auto;
+  place-items: center;
+  border: 1px solid #d0d0cc;
+  border-radius: 50%;
+}
+
+.education-card h3 {
+  max-width: 400px;
+  margin: 8px 0 12px;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
+.institution {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.date {
+  display: flex;
+  margin-top: 28px;
+  align-items: center;
+  gap: 9px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+}
+
+.skills-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+
+.skill-group p {
+  margin: 0 0 18px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pills span {
+  border: 1px solid #0b0b0b;
+  border-radius: 100px;
+  padding: 10px 15px;
+  color: #fff;
+  background: #0b0b0b;
+  font-size: 11px;
+}
+
+.pills.light span {
+  color: #272727;
+  background: #fff;
+}
+
+/* Certificate Cards & Logos */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.certificate-card {
+  overflow: hidden;
+  border: 1px solid #d5d5d1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.certificate-preview {
+  position: relative;
+  display: flex;
+  min-height: 210px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #d5d5d1;
+  background: repeating-linear-gradient(135deg, #f7f7f4 0, #f7f7f4 8px, #eeeeea 8px, #eeeeea 9px);
+}
+
+.certificate-preview > span {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+}
+
+.certificate-preview small {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  color: #777;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.certificate-mark {
+  display: grid;
+  width: 90px;
+  height: 90px;
+  place-items: center;
+  border: 1px solid #222;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.cert-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.certificate-body {
+  display: flex;
+  min-height: 205px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+}
+
+.certificate-body p {
+  margin: 0 0 8px;
+  color: #888;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.certificate-body h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.credential-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e2df;
+}
+
+.credential-meta div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.credential-meta span {
+  color: #888;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.credential-meta strong {
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+/* Contact Section */
+.contact-section {
+  display: grid;
+  padding: 108px clamp(44px, 7vw, 110px);
+  color: #fff;
+  background: #0b0b0b;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 9vw;
+}
+
+.light-kicker {
+  color: #aaa;
+}
+
+.contact-intro h2 {
+  margin: 34px 0 24px;
+}
+
+.contact-intro > p {
+  max-width: 500px;
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.contact-details {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-details a,
+.contact-details > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.contact-details svg {
+  color: #888;
+}
+
+.contact-details span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-details small {
+  color: #777;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+form label {
+  color: #bdbdbd;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+  border: 0;
+  border-bottom: 1px solid #444;
+  border-radius: 0;
+  outline: 0;
+  padding: 10px 0 14px;
+  color: #fff;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+  text-transform: none;
+  transition: border-color 180ms ease;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #fff;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: #666;
+}
+
+.button-white {
+  width: fit-content;
+  margin-top: 5px;
+  border-color: #fff;
+  color: #0b0b0b;
+  background: #fff;
+}
+
+.main-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #dededb;
+  padding: 25px clamp(44px, 7vw, 110px);
+  color: #888;
+  background: #fff;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+/* Dark Theme Overrides */
+html[data-theme="dark"] {
+  color: #f4f4f2;
+  background: #0b0b0b;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .hero {
+  background: #0f0f0f;
+}
+
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .content-section,
+html[data-theme="dark"] .main-footer {
+  border-color: #2b2b2b;
+  background: #151515;
+}
+
+html[data-theme="dark"] .muted-section {
+  background: #101010;
+}
+
+html[data-theme="dark"] nav a,
+html[data-theme="dark"] nav a:last-child,
+html[data-theme="dark"] .socials a,
+html[data-theme="dark"] .theme-icon,
+html[data-theme="dark"] .quick-facts,
+html[data-theme="dark"] .quick-facts div,
+html[data-theme="dark"] .education-card,
+html[data-theme="dark"] .skills-panel,
+html[data-theme="dark"] .certificate-card,
+html[data-theme="dark"] .certificate-preview {
+  border-color: #343434;
+}
+
+html[data-theme="dark"] .avatar-wrap img {
+  border-color: #333333;
+}
+
+html[data-theme="dark"] .profile-role,
+html[data-theme="dark"] nav a,
+html[data-theme="dark"] .hero-topline,
+html[data-theme="dark"] .hero-copy,
+html[data-theme="dark"] .section-kicker,
+html[data-theme="dark"] .institution,
+html[data-theme="dark"] .certificate-body p,
+html[data-theme="dark"] .credential-meta span,
+html[data-theme="dark"] .main-footer {
+  color: #929292;
+}
+
+html[data-theme="dark"] nav a:hover {
+  color: #f4f4f2;
+}
+
+html[data-theme="dark"] .available-dot,
+html[data-theme="dark"] .availability i {
+  background: #f4f4f2;
+}
+
+html[data-theme="dark"] .available-dot {
+  border-color: #151515;
+}
+
+html[data-theme="dark"] .availability i {
+  box-shadow: 0 0 0 4px #333;
+}
+
+html[data-theme="dark"] h1 em {
+  color: #858585;
+}
+
+html[data-theme="dark"] .button-dark {
+  border-color: #f4f4f2;
+  color: #0b0b0b;
+  background: #f4f4f2;
+}
+
+html[data-theme="dark"] .button-light {
+  border-color: #555;
+}
+
+html[data-theme="dark"] .education-card,
+html[data-theme="dark"] .certificate-card {
+  background: #191919;
+}
+
+html[data-theme="dark"] .pills span {
+  border-color: #efefec;
+  color: #111;
+  background: #efefec;
+}
+
+html[data-theme="dark"] .pills.light span {
+  border-color: #4a4a4a;
+  color: #ddd;
+  background: #222;
+}
+
+html[data-theme="dark"] .certificate-preview {
+  background: repeating-linear-gradient(135deg, #171717 0, #171717 8px, #202020 8px, #202020 9px);
+}
+
+html[data-theme="dark"] .credential-meta {
+  border-color: #343434;
+}
+
+html[data-theme="dark"] .certificate-mark {
+  border-color: #343434;
+  background: #ffffff;
+}
+
+html[data-theme="dark"] .theme-toggle > i {
+  border-color: #555;
+  background: #333;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid #dededb;
+    padding: 18px 24px;
+  }
+
+  .sidebar > div:first-child {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-theme {
+    display: flex;
+    width: auto;
+    margin: 0 0 0 18px;
+  }
+
+  .mobile-theme > span:not(.theme-icon),
+  .mobile-theme > i {
+    display: none;
+  }
+
+  .profile,
+  .sidebar-footer {
+    display: none;
+  }
+
+  nav {
+    margin-left: auto;
+    margin: 0;
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  nav a {
+    border: 0;
+    padding: 0;
+  }
+
+  nav a:last-child {
+    border: 0;
+  }
+
+  nav a span {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+  }
+
+  .hero {
+    min-height: calc(100vh - 61px);
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .education-grid,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .sidebar {
+    padding: 16px 18px;
+  }
+
+  nav a {
+    display: none;
+  }
+
+  nav a:last-child {
+    display: block;
+    padding: 9px 14px;
+    color: #fff;
+    border-radius: 3px;
+    background: #0b0b0b;
+  }
+
+  .mobile-theme {
+    margin-left: 10px;
+  }
+
+  .hero {
+    padding: 26px 22px 0;
+  }
+
+  .hero-topline .availability {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 60px 0;
+  }
+
+  h1 {
+    font-size: clamp(43px, 14vw, 62px);
+  }
+
+  .hero-copy {
+    font-size: 14px;
+  }
+
+  .quick-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-facts div,
+  .quick-facts div:first-child {
+    min-height: 66px;
+    border-right: 0;
+    border-bottom: 1px solid #d8d8d4;
+    padding: 0;
+  }
+
+  .content-section,
+  .contact-section {
+    padding: 76px 22px;
+  }
+
+  .section-heading {
+    margin-bottom: 42px;
+  }
+
+  .education-card,
+  .skills-panel {
+    min-height: 330px;
+    padding: 25px;
+  }
+
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-footer {
+    align-items: flex-start;
+    padding: 22px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
