@@ -597,3 +597,101 @@ form input:focus, form textarea:focus {
   font-family: "DM Mono", monospace;
   font-size: 10px;
   color: #888;
+}
+
+/* Dark Theme */
+html[data-theme="dark"] {
+  background: #0f0f0f;
+  color: #f4f4f2;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .hero {
+  background: #0f0f0f;
+  color: #f4f4f2;
+}
+
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .content-section,
+html[data-theme="dark"] .main-footer {
+  background: #151515;
+  border-color: #2b2b2b;
+}
+
+html[data-theme="dark"] .muted-section,
+html[data-theme="dark"] .education-card,
+html[data-theme="dark"] .skills-panel,
+html[data-theme="dark"] .certificate-card {
+  background: #1c1c1c;
+  border-color: #2b2b2b;
+}
+
+html[data-theme="dark"] .certificate-preview {
+  background: #252525;
+}
+
+html[data-theme="dark"] .certificate-mark {
+  background: #fff;
+  border-color: #333;
+}
+
+html[data-theme="dark"] .avatar-wrap img {
+  border-color: #fff;
+}
+
+html[data-theme="dark"] .button-dark {
+  background: #f4f4f2;
+  color: #0b0b0b;
+  border-color: #f4f4f2;
+}
+
+html[data-theme="dark"] .button-light {
+  color: #f4f4f2;
+  border-color: #444;
+}
+
+html[data-theme="dark"] .pills span {
+  background: #f4f4f2;
+  color: #0b0b0b;
+}
+
+html[data-theme="dark"] .pills.light span {
+  background: #333;
+  color: #eee;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  background: #222;
+  border-color: #333;
+  color: #ddd;
+}
+
+html[data-theme="dark"] nav a {
+  border-color: #262626;
+  color: #888;
+}
+
+html[data-theme="dark"] nav a:hover {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  main {
+    margin-left: 0;
+  }
+  .education-grid, .contact-section {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 30px 24px;
+  }
+  .content-section, .contact-section {
+    padding: 60px 24px;
+  }
+}
