@@ -77,7 +77,7 @@ document.querySelector("#root").innerHTML = `
           <span class="availability"><i></i>Available for opportunities</span>
         </div>
         <div class="hero-content">
-          <p class="overline">Hello, I’m Jaime —</p>
+          <p class="overline">Hello, I’m Jaime — An Asipiring</p>
           <h1>Web developer building <em>clean, purposeful</em> digital experiences.</h1>
           <p class="hero-copy">Motivated individual looking to apply technical skills in a challenging environment. Quick learner with a passion for web development.</p>
           <div class="hero-actions">
