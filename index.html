@@ -405,12 +405,14 @@
         border: 1px solid #dededb;
         display: grid;
         place-items: center;
-        padding: 14px;
+        padding: 0; /* Removed the 14px padding so the image touches the edges */
+        overflow: hidden; /* Clips the square image into the circle */
       }
+
       .cert-logo-img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover; /* Changes from 'contain' to 'cover' to fill the entire space */
       }
       .certificate-body {
         padding: 20px;
